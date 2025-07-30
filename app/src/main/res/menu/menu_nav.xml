@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/item_distance"
+        android:id="@+id/menu_item_distance"
         android:enabled="true"
         android:icon="@drawable/icon_ruler"
         android:title="@string/distance"
         />
     <item
-        android:id="@+id/item_weight"
+        android:id="@+id/menu_item_weight"
         android:enabled="true"
         android:icon="@drawable/icon_scale"
         android:title="@string/weight"/>
     <item
-        android:id="@+id/item_temperature"
+        android:id="@+id/menu_item_temperature"
         android:enabled="true"
         android:icon="@drawable/icon_thermometer"
         android:title="@string/temperature"/>

@@ -1,10 +1,16 @@
 package com.example.convercalc
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +23,15 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class FragmentDistance : Fragment() {
+
+    private lateinit var editTextDistanceInput: EditText
+    private lateinit var textViewDistanceInputUnit: TextView
+    private lateinit var textViewDistanceOutput: TextView
+    private lateinit var textViewDistanceOutputUnit: TextView
+    private lateinit var buttonConvertDistance: Button
+    private lateinit var imageViewIconSwap: ImageView
+    val calculator = DistanceCalculator()
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,9 +48,61 @@ class FragmentDistance : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val view = inflater.inflate(R.layout.fragment_distance, container, false)
+
+        editTextDistanceInput = view.findViewById(R.id.edit_text_distance_input)
+        textViewDistanceInputUnit = view.findViewById(R.id.text_view_distance_input_unit)
+        textViewDistanceOutput = view.findViewById(R.id.text_view_distance_output)
+        textViewDistanceOutputUnit = view.findViewById(R.id.text_view_distance_output_unit)
+        buttonConvertDistance = view.findViewById(R.id.button_convert_distance)
+        imageViewIconSwap = view.findViewById(R.id.image_view_icon_swap)
+
+        buttonConvertDistance.setOnClickListener {
+            convertDistance()
+        }
+
+        imageViewIconSwap.setOnClickListener {
+            swapUnits()
+        }
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_distance, container, false)
+        return view
     }
+
+    @SuppressLint("DefaultLocale")
+    fun convertDistance() {
+        val input = editTextDistanceInput.text.toString()
+        if (!input.isEmpty()) {
+
+            val output = calculator.inchesAndCentimeters(input.toDouble())
+            textViewDistanceOutput.text = String.format("%.1f", output)
+
+        } else {
+            Toast.makeText(context, "Enter a number", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun swapUnits() {
+
+        calculator.setSwapUnits(!calculator.getSwapUnits())
+        if (calculator.getSwapUnits()) {
+            textViewDistanceInputUnit.text = getString(R.string.cm)
+            textViewDistanceOutputUnit.text = getString(R.string.in_abbreviation)
+        } else {
+            textViewDistanceInputUnit.text = getString(R.string.in_abbreviation)
+            textViewDistanceOutputUnit.text = getString(R.string.cm)
+        }
+
+        if (editTextDistanceInput.text.toString().isNotEmpty()) {
+            convertDistance()
+        }
+
+    }
+
+
 
     companion object {
         /**
