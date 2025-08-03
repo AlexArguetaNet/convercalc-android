@@ -52,11 +52,11 @@ class FragmentDistance : Fragment() {
         val view = inflater.inflate(R.layout.fragment_distance, container, false)
 
         editTextDistanceInput = view.findViewById(R.id.edit_text_distance_input)
-        textViewDistanceInputUnit = view.findViewById(R.id.text_view_distance_input_unit)
-        textViewDistanceOutput = view.findViewById(R.id.text_view_distance_output)
-        textViewDistanceOutputUnit = view.findViewById(R.id.text_view_distance_output_unit)
-        buttonConvertDistance = view.findViewById(R.id.button_convert_distance)
-        imageViewIconSwap = view.findViewById(R.id.image_view_icon_swap)
+        textViewDistanceInputUnit = view.findViewById(R.id.text_view_weight_input_unit)
+        textViewDistanceOutput = view.findViewById(R.id.text_view_weight_output)
+        textViewDistanceOutputUnit = view.findViewById(R.id.text_view_weight_output_unit)
+        buttonConvertDistance = view.findViewById(R.id.button_convert_weight)
+        imageViewIconSwap = view.findViewById(R.id.image_view_distance_icon_swap)
 
         buttonConvertDistance.setOnClickListener {
             convertDistance()

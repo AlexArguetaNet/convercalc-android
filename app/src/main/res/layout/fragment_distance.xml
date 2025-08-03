@@ -9,85 +9,86 @@
 
 
     <Button
-        android:id="@+id/button_convert_distance"
+        android:id="@+id/button_convert_weight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="284dp"
+        android:layout_marginBottom="272dp"
         android:text="@string/convert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="128dp"
+        android:text="@string/equals_symbol"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_convert_weight"
+        app:layout_constraintEnd_toEndOf="@+id/button_convert_weight"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/button_convert_weight" />
 
     <EditText
         android:id="@+id/edit_text_distance_input"
-        android:layout_width="69dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="117dp"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-5dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_convert_distance"
-        app:layout_constraintStart_toStartOf="@+id/button_convert_distance" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="@+id/button_convert_weight" />
 
     <TextView
-        android:id="@+id/text_view_distance_input_unit"
+        android:id="@+id/text_view_weight_output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/in_abbreviation"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_text_distance_input"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_distance_input" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="@string/equals_symbol"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/image_view_icon_swap"
-        app:layout_constraintEnd_toEndOf="@+id/button_convert_distance"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/button_convert_distance" />
-
-    <TextView
-        android:id="@+id/text_view_distance_output"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="7dp"
         android:text="@string/zero_int"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_text_distance_input"
-        app:layout_constraintStart_toEndOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/text_view_distance_output_unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="7dp"
-        android:text="@string/cm"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_text_distance_input"
-        app:layout_constraintEnd_toEndOf="@+id/button_convert_distance" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/button_convert_weight"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
 
     <ImageView
-        android:id="@+id/image_view_icon_swap"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="56dp"
+        android:id="@+id/image_view_distance_icon_swap"
+        android:layout_width="31dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="48dp"
         android:src="@drawable/icon_swap"
-        app:layout_constraintBottom_toTopOf="@+id/button_convert_distance"
-        app:layout_constraintEnd_toEndOf="@+id/button_convert_distance"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/button_convert_distance" />
+        app:layout_constraintBottom_toTopOf="@+id/button_convert_weight"
+        app:layout_constraintEnd_toEndOf="@+id/button_convert_weight"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/button_convert_weight" />
+
+    <TextView
+        android:id="@+id/text_view_weight_input_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/in_abbreviation"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_convert_weight"
+        app:layout_constraintStart_toStartOf="@+id/button_convert_weight" />
+
+    <TextView
+        android:id="@+id/text_view_weight_output_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/cm"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_convert_weight"
+        app:layout_constraintEnd_toEndOf="@+id/button_convert_weight" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
