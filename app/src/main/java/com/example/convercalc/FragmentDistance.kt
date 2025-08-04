@@ -30,7 +30,7 @@ class FragmentDistance : Fragment() {
     private lateinit var textViewDistanceOutputUnit: TextView
     private lateinit var buttonConvertDistance: Button
     private lateinit var imageViewIconSwap: ImageView
-    val calculator = DistanceCalculator()
+    val calculator = Calculator()
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -64,6 +64,13 @@ class FragmentDistance : Fragment() {
 
         imageViewIconSwap.setOnClickListener {
             swapUnits()
+        }
+
+        textViewDistanceInputUnit.setOnClickListener {
+
+            val dialogUnitSelector = DialogFragmentUnitSelector()
+            dialogUnitSelector.show(childFragmentManager, "dialog_unit_selector")
+
         }
 
 

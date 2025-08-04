@@ -23,7 +23,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FragmentWeight : Fragment() {
 
-    val calculator = WeightCalculator()
+    val calculator = Calculator()
     private lateinit var editTextInput: EditText
     private lateinit var textViewOutput: TextView
     private lateinit var buttonConvert: Button

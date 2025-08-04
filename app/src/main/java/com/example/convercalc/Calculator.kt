@@ -1,16 +1,15 @@
 package com.example.convercalc
 
-class DistanceCalculator {
+class Calculator {
 
     private var swapUnits = false
 
     fun setSwapUnits(boolVal: Boolean) {
-        this.swapUnits = boolVal
+        swapUnits = boolVal
     }
     fun getSwapUnits(): Boolean {
-        return this.swapUnits
+        return swapUnits
     }
-
 
     fun inchesAndCentimeters(x: Double): Double {
         return if (!swapUnits) {
@@ -36,5 +35,17 @@ class DistanceCalculator {
         }
 
     }
+
+    fun lbsAndKgs (x: Double): Double {
+
+        return if (!swapUnits) {
+            x / 2.205
+        } else {
+            x * 2.205
+        }
+
+    }
+
+
 
 }
