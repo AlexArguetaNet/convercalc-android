@@ -68,7 +68,8 @@ class FragmentDistance : Fragment() {
 
         textViewDistanceInputUnit.setOnClickListener {
 
-            val dialogUnitSelector = DialogFragmentUnitSelector()
+            val units = arrayOf("inches", "centimeters", "feet", "yards")
+            val dialogUnitSelector = DialogFragmentUnitSelector.newInstance(units)
             dialogUnitSelector.show(childFragmentManager, "dialog_unit_selector")
 
         }
