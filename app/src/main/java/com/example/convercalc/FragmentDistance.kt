@@ -22,7 +22,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FragmentDistance.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentDistance : Fragment() {
+class FragmentDistance : Fragment(), DialogFragmentUnitSelector.OnUnitSelectedListener {
 
     private lateinit var editTextDistanceInput: EditText
     private lateinit var textViewDistanceInputUnit: TextView
@@ -70,6 +70,7 @@ class FragmentDistance : Fragment() {
 
             val units = arrayOf("inches", "centimeters", "feet", "yards")
             val dialogUnitSelector = DialogFragmentUnitSelector.newInstance(units)
+            dialogUnitSelector.setOnUnitSelectedListener(this)
             dialogUnitSelector.show(childFragmentManager, "dialog_unit_selector")
 
         }
@@ -110,6 +111,9 @@ class FragmentDistance : Fragment() {
 
     }
 
+    override fun onUnitSelected(unit: String) {
+        textViewDistanceInputUnit.text = unit
+    }
 
 
     companion object {

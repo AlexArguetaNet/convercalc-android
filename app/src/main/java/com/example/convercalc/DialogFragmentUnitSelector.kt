@@ -4,19 +4,23 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 
 class DialogFragmentUnitSelector: DialogFragment() {
 
-    private lateinit var buttonExit: Button
     private lateinit var radioGroupUnits: RadioGroup
+    public lateinit var currentUnit: String
 
+    interface OnUnitSelectedListener {
+        fun onUnitSelected(unit: String)
+    }
+    private var onUnitSelectedListener: OnUnitSelectedListener? = null
 
     @SuppressLint("UseGetLayoutInflater")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -29,7 +33,7 @@ class DialogFragmentUnitSelector: DialogFragment() {
 
             // Initialize UI components
             radioGroupUnits = view.findViewById(R.id.radio_group_units)
-            buttonExit = view.findViewById(R.id.button_dialog_unit_selector_exit)
+
 
             // Get units array and create radio buttons for radio group
             val units = arguments?.getStringArray(ARG_UNITS)
@@ -37,8 +41,18 @@ class DialogFragmentUnitSelector: DialogFragment() {
                 createRadioButtons(units)
             }
 
-            buttonExit.setOnClickListener {
-                dismiss()
+            // Listener for radio group
+            radioGroupUnits.setOnCheckedChangeListener { group, checkedId ->
+
+                val selectedRadioButton: RadioButton = group.findViewById(checkedId)
+                currentUnit = selectedRadioButton.text.toString()
+
+                onUnitSelectedListener?.onUnitSelected(currentUnit)
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    dismiss()
+                }, 400)
+
             }
 
             builder.setView(view)
@@ -60,6 +74,10 @@ class DialogFragmentUnitSelector: DialogFragment() {
         }
     }
 
+    fun setOnUnitSelectedListener(listener: OnUnitSelectedListener) {
+        this.onUnitSelectedListener = listener
+    }
+
     fun createRadioButtons(unitsArray: Array<String>) {
 
         // Clear all existing radio buttons
@@ -73,10 +91,6 @@ class DialogFragmentUnitSelector: DialogFragment() {
         }
 
 
-    }
-
-    fun createToast() {
-        Toast.makeText(context, "You pressed the button", Toast.LENGTH_SHORT).show()
     }
 
 }
